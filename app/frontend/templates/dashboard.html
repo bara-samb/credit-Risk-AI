@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+  <div class="heading-icon"><i class="fa-solid fa-chart-line"></i></div>
+  <h2>Performances du modèle</h2>
+</section>
+<section class="metrics-grid">
+  <article class="metric-card success"><div class="icon-wrap green"><i class="fa-solid fa-chart-line"></i></div><div><p>Accuracy</p><h3 id="accuracyValue">--</h3></div></article>
+  <article class="metric-card danger"><div class="icon-wrap red"><i class="fa-solid fa-triangle-exclamation"></i></div><div><p>Précision</p><h3 id="precisionValue">--</h3></div></article>
+  <article class="metric-card success"><div class="icon-wrap green"><i class="fa-solid fa-check"></i></div><div><p>Recall</p><h3 id="recallValue">--</h3></div></article>
+  <article class="metric-card danger"><div class="icon-wrap red"><i class="fa-solid fa-scale-balanced"></i></div><div><p>F1 Score</p><h3 id="f1Value">--</h3></div></article>
+  <article class="metric-card success"><div class="icon-wrap green"><i class="fa-solid fa-chart-area"></i></div><div><p>ROC-AUC</p><h3 id="aucValue">--</h3></div></article>
+</section>
+<section class="panel">
+  <div class="panel-head">
+    <h2><i class="fa-solid fa-table-cells-large"></i> Matrice de confusion</h2>
+    <span class="model-sample">Jeu de test · <strong id="testRecords">--</strong> dossiers</span>
+  </div>
+  <div id="confusionMatrix" class="matrix-grid"></div>
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.git/
+.gitignore
+*.ipynb
+tests/
+*.xlsx
+*.xls
+*.csv
+.env
+.env.*
+.DS_Store

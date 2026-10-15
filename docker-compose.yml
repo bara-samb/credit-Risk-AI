@@ -1,0 +1,12 @@
+services:
+  credit-risk-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit-risk-app
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      CREDIT_RISK_REQUIRE_ARTIFACT: "1"
+    restart: unless-stopped

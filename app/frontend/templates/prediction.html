@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+  <div class="heading-icon"><i class="fa-solid fa-user-check"></i></div>
+  <h2>Évaluer un dossier</h2>
+</section>
+<section class="panel form-panel">
+  <form id="predictionForm">
+    <div class="form-grid">
+      <label><span>Agence</span><select name="AGENCE"></select></label>
+      <label><span>Secteur d’activité</span><select name="SECTEUR ACTIVITE"></select></label>
+      <label><span>Type de crédit</span><select name="TYPE DE CREDIT"></select></label>
+      <label><span>Année ouverture</span><input name="ANNEE OUVERTURE" type="number" value="2024" required /></label>
+      <label><span>Mois ouverture</span><input name="MOIS OUVERTURE" type="number" min="1" max="12" value="6" required /></label>
+      <label><span>Âge</span><input name="Age" type="number" min="18" value="28" required /></label>
+      <label><span>Nombre de crédits antérieurs</span><input name="Nombre de Crédit antérieur" type="number" min="0" value="2" required /></label>
+      <label><span>Solde du crédit</span><input name="SOLDE_CREDIT" type="number" min="0" value="150000" required /></label>
+      <label><span>Montant déboursé</span><input name="MONTANT_DEBOURSE" type="number" min="0" value="500000" required /></label>
+    </div>
+    <button type="submit" class="primary-btn"><i class="fa-solid fa-magnifying-glass"></i> Calculer le risque</button>
+  </form>
+  <div id="predictionResult" class="prediction-box" aria-live="polite">
+    <p>Résultat de la prédiction</p><h3>En attente...</h3>
+  </div>
+</section>
+{% endblock %}

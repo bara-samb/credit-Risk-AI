@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-heading">
+  <div class="heading-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+  <h2>Évaluer un historique</h2>
+</section>
+<section class="panel">
+  <div class="panel-head"><h2><i class="fa-solid fa-file-csv"></i> Fichier de dossiers étiquetés</h2></div>
+  <div class="upload-box">
+    <label for="historyFile" class="upload-label"><i class="fa-solid fa-cloud-arrow-up"></i><span>Choisir un fichier CSV ou JSON</span></label>
+    <input id="historyFile" type="file" accept=".csv,.json,.txt" />
+  </div>
+  <div id="historyMetrics" class="mini-metrics">
+    <div class="mini-block"><span>Dossiers évalués</span><strong id="historyRecords">--</strong></div>
+    <div class="mini-block"><span>Accuracy</span><strong id="historyAccuracy">--</strong></div>
+  </div>
+  <div class="confusion-box">
+    <h3>Matrice de confusion</h3>
+    <div id="confusionMatrix" class="matrix-grid"></div>
+  </div>
+</section>
+{% endblock %}

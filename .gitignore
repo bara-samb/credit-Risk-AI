@@ -1,0 +1,17 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+.env.*
+!.env.example
+DataSet_Credit.xlsx
+*.xlsx
+*.xls
+*.csv
+*.log
+.DS_Store
+Thumbs.db
