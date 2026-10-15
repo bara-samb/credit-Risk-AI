@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: credit-risk-ai
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeploy: true

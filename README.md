@@ -43,7 +43,7 @@ python -m uvicorn app.backend.main:app --host 0.0.0.0 --port 8000
 
 Puis ouvrir `http://localhost:8000`.
 
-## Déploiement Docker
+## Déploiement Docker local
 
 L’image copie l’artefact dans le conteneur. Le classeur d’entraînement et le venv local ne sont pas inclus. Docker est configuré pour échouer au démarrage si l’artefact de production est absent ou invalide.
 
@@ -67,7 +67,22 @@ Arrêter l’application :
 docker compose down
 ```
 
-Pour un hébergeur Docker distant, publier l’image construite et configurer le port `8000`. L’artefact doit être présent dans `artifacts/` au moment du build. Ne publiez pas le classeur source ni de données client.
+Le conteneur écoute sur le port `PORT` fourni par l’environnement, avec `8000` comme valeur locale par défaut. Il refuse le démarrage si l’artefact de production est absent ou invalide.
+
+## Déploiement Render
+
+Le dépôt contient un Blueprint `render.yaml` qui configure un service Web Docker, un contrôle de santé sur `/api/health` et le déploiement automatique depuis `main`.
+
+1. Connecte-toi à Render et choisis **New + → Blueprint**.
+2. Sélectionne le dépôt `bara-samb/credit-Risk-AI` et la branche `main`.
+3. Vérifie les paramètres détectés : région Frankfurt, plan Free, Dockerfile à la racine.
+4. Lance la création du service et attends que le premier déploiement passe le contrôle de santé.
+
+Render attribuera alors une URL HTTPS de la forme `https://credit-risk-ai.onrender.com`. L’URL exacte est affichée dans le tableau de bord Render après création ; elle ne peut pas être connue avant que Render provisionne le service.
+
+L’artefact `artifacts/model_credit_risk_artifacts.pkl` est inclus dans le dépôt et copié dans l’image. Si le modèle est réentraîné, reconstruis et pousse le changement pour déclencher un nouveau déploiement. Ne publie pas le classeur source ni des données client.
+
+Le plan gratuit peut mettre le service en veille après une période d’inactivité ; la première requête suivante peut alors prendre plus de temps.
 
 ## Format des tests historiques
 
